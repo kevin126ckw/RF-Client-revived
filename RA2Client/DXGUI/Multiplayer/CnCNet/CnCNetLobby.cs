@@ -164,6 +164,7 @@ namespace Ra2Client.DXGUI.Multiplayer.CnCNet
             "Reunion Availability Zone 2",
             "Reunion Availability Zone 3",
             "Reunion Availability Zone 4",
+            "Reunion Availability Zone 5"
         ];
 
         private void GameList_ClientRectangleUpdated(object sender, EventArgs e)
@@ -324,6 +325,7 @@ namespace Ra2Client.DXGUI.Multiplayer.CnCNet
             ddServerRegion.AddItem("Reunion Availability Zone 2".L10N("UI:Main:AvailabilityZone2"));
             ddServerRegion.AddItem("Reunion Availability Zone 3".L10N("UI:Main:AvailabilityZone3"));
             ddServerRegion.AddItem("Reunion Availability Zone 4".L10N("UI:Main:AvailabilityZone4"));
+            ddServerRegion.AddItem("Reunion Availability Zone 5".L10N("UI:Main:AvailabilityZone5"));
 
             int defaultRegionIndex = Array.IndexOf(SERVER_REGIONS, Connection.SelectedRegion);
             if (defaultRegionIndex == -1)

@@ -55,6 +55,7 @@ namespace Ra2Client.Online
             new Server("a2-xe4.irc.ra2yr.com", "Reunion Japan Prefix-2461", [6697], "Reunion Availability Zone 2"), // TYO X2
             new Server("b1-xe5.irc.ra2yr.com", "Reunion United Kingdom Prefix-2468", [6697], "Reunion Availability Zone 3"), // CVT+LON X2
             new Server("b2-xe6.irc.ra2yr.com", "Reunion United States Prefix-2469", [6697], "Reunion Availability Zone 4"), // LAX X2
+            new Server("ra2yr.dreamcloud.top", "Dreamcloud Private Server Prefix-2466",[6697],"Reunion Availability Zone 5"), // Private
         }.AsReadOnly();
 
         bool _isConnected = false;

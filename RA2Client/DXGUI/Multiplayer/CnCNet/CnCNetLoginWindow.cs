@@ -84,6 +84,7 @@ namespace Ra2Client.DXGUI.Multiplayer.CnCNet
             ddRegion.AddItem("Reunion Availability Zone 2".L10N("UI:Main:AvailabilityZone2"));
             ddRegion.AddItem("Reunion Availability Zone 3".L10N("UI:Main:AvailabilityZone3"));
             ddRegion.AddItem("Reunion Availability Zone 4".L10N("UI:Main:AvailabilityZone4"));
+            ddRegion.AddItem("Reunion Availability Zone 5".L10N("UI:Main:AvailabilityZone5"));
             ddRegion.SelectedIndex = 0;
 
             lblRegion = new XNALabel(WindowManager);
@@ -179,6 +180,8 @@ namespace Ra2Client.DXGUI.Multiplayer.CnCNet
                     return "Availability Zone 3 Overview (United Kingdom):\n\nRegion: London, United Kingdom / Coventry, United Kingdom\nAverage latency: 235ms (Delayed test location: China)\n\nLine: GTT+NTT+PCCW+Arelion+RETN\nNetwork support: IPv4+IPv6\nCloud service provider: Yunyoo".L10N("UI:Main:RegionDescUK");
                 case 3: 
                     return "Availability Zone 4 Overview (United States):\n\nRegion: Los Angeles, USA\nAverage latency: 160ms (Delayed test location: China)\n\nLine: GSL+CN2GIA+9929+10099+CMIN2\nNetwork support: IPv4+IPv6\nCloud service provider: DMIT".L10N("UI:Main:RegionDescUS");
+                case 4:
+                    return "Reunion Availability Zone 5 Overview (China): \n\nPrivate";
                 default: 
                     return "Please select a server region to view the region introduction.".L10N("UI:Main:RegionDescDefault");
             }
@@ -235,6 +238,9 @@ namespace Ra2Client.DXGUI.Multiplayer.CnCNet
                     break;
                 case 3: 
                     selectedRegion = "Reunion Availability Zone 4";
+                    break;
+                case 4:
+                    selectedRegion = "Reunion Availability Zone 5";
                     break;
             }
             Connection.SelectedRegion = selectedRegion;
