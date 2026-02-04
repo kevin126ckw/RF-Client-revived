@@ -93,7 +93,7 @@ namespace Ra2Client.Domain.Multiplayer.CnCNet
             List<CnCNetTunnel> tunnels = [
                 //CnCNetTunnel.Parse("127.6.6.6:50000;China;CN;名称里带Reunion的都是重聚官服;0;0;1;0;0;0;2;0"),
                 //CnCNetTunnel.Parse("127.8.8.8:50000;China;CN;不要选这里的这两个, 服务器无效;0;0;1;0;0;0;2;0"),
-                CnCNetTunnel.Parse("ra2yr.dreamcloud.top:50000;China;CN;服务器;0;0;1;0;0;0;2;0")
+                CnCNetTunnel.Parse("120.211.70.69:50000;China;CN;[CN][官方]Dreamcloud Private Server;0;0;200;2;0;0;2;0")
                 ];
 
 
@@ -184,7 +184,7 @@ namespace Ra2Client.Domain.Multiplayer.CnCNet
 
             List<CnCNetTunnel> returnValue = new List<CnCNetTunnel>();
 
-            Logger.Log("Fetching tunnel server info.");
+            Logger.Log("Fetching tunnel server info."); 
 
             try
             {
