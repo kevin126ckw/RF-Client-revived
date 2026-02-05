@@ -76,20 +76,22 @@ namespace Reunion
             {
                 if (!File.Exists(ReadmeFile) || !File.Exists(FreeFile) || !File.Exists(LicenseFile) || !File.Exists(AntiCheatFile))
                 {
-                    MessageBox.Show("发现未知错误，请联系重聚未来制作组", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
+                    //MessageBox.Show("发现未知错误，请联系重聚未来制作组", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("游戏校验文件完整性失败，有文件不存在，已强制忽略这些文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return true;
                 }
 
                 if (!ComputeFileSHA256(ReadmeFile).Equals(ReadmeFileHash, StringComparison.OrdinalIgnoreCase) || !ComputeFileMD5(FreeFile).Equals(FreeFileHash, StringComparison.OrdinalIgnoreCase) || !ComputeFileSHA1(LicenseFile).Equals(LicenseFileHash, StringComparison.OrdinalIgnoreCase) || !ComputeFileSHA512(AntiCheatFile).Equals(AntiCheatFileHash, StringComparison.OrdinalIgnoreCase))
                 {
-                    MessageBox.Show("发现未知错误，请联系重聚未来制作组", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
+                    //MessageBox.Show("发现未知错误，请联系重聚未来制作组", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("游戏校验文件完整性失败，有文件校验失败，已强制忽略这些文件", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return true;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"文件校验出错: {ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                MessageBox.Show($"文件校验出错: {ex.Message}，已跳过校验", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
             }
             return true;
         }

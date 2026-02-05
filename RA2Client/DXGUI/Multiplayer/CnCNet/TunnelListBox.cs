@@ -130,13 +130,13 @@ namespace Ra2Client.DXGUI.Multiplayer.CnCNet
                     try
                     {
                         string cc = string.IsNullOrWhiteSpace(countrycode) ? "aq" : countrycode.ToLowerInvariant();
-                        string url = $"https://res.yra2.com/flags/{cc}.png";
+                        string url = $"https://ra2yr.dreamcloud.top:9999/flags/{cc}.png";
 
                         Texture2D tex = await AssetLoader.LoadTextureFromUrl(url).ConfigureAwait(false);
 
                         if (tex == null && cc != "aq")
                         {
-                            tex = await AssetLoader.LoadTextureFromUrl("https://res.yra2.com/flags/aq.png").ConfigureAwait(false);
+                            tex = await AssetLoader.LoadTextureFromUrl("https://ra2yr.dreamcloud.top:9999/flags/aq.png").ConfigureAwait(false);
                         }
 
                         if (tex == null)

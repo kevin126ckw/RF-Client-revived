@@ -498,10 +498,14 @@ public static class Updater
                 if (v1.Build == v2.Build)
                 {
                     if (v1.Revision > v2.Revision)
+                    {
+                        Logger.Log("更新：有新版本");
                         return true;
+                    }
                 }
             }
         }
+        Logger.Log("更新：无新版本");
         return false;
     }
 
