@@ -803,7 +803,7 @@ public class WindowManager : DrawableGameComponent
 #if true
         Renderer.DrawString("Reunion 2023 非官方服务器客户端", 0, Vector2.Zero, Color.Red, 1.0f);
         Renderer.DrawString("Patch by Kevin", 0, new Vector2(0, 16), Color.Red, 1.0f);
-        Renderer.DrawString("Version 1.0", 0, new Vector2(0, 32), Color.Red, 1.0f);
+        Renderer.DrawString("Version 1.1", 0, new Vector2(0, 32), Color.Red, 1.0f);
 #endif
 #if DEBUG
         Renderer.DrawString("Active Control: " + activeControlName, 0, new Vector2(0, 48), Color.Red, 1.0f);
