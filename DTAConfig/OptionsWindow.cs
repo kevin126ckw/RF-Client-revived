@@ -68,7 +68,8 @@ namespace DTAConfig
             //tabControl.AddTab("Skin".L10N("UI:DTAConfig:TabSkin"), UIDesignConstants.BUTTON_WIDTH_92);
             tabControl.AddTab("Updater".L10N("UI:DTAConfig:TabUpdater"), UIDesignConstants.BUTTON_WIDTH_92);
             tabControl.AddTab("Components".L10N("UI:DTAConfig:TabComponents"), UIDesignConstants.BUTTON_WIDTH_92);
-            //tabControl.AddTab("Creator".L10N("UI:DTAConfig:TabCreator"), UIDesignConstants.BUTTON_WIDTH_92);
+            tabControl.AddTab("Creator".L10N("UI:DTAConfig:TabCreator"), UIDesignConstants.BUTTON_WIDTH_92);
+            tabControl.AddTab("补丁设置", UIDesignConstants.BUTTON_WIDTH_92);
             tabControl.SelectedIndexChanged += TabControl_SelectedIndexChanged;
 
             btnCancel = new XNAClientButton(WindowManager);
@@ -110,7 +111,8 @@ namespace DTAConfig
                 // new LocalSkinPanel(WindowManager, UserINISettings.Instance),                        //4 "皮肤"页面
                 updaterOptionsPanel,                                                                //5 "更新器"页面
                 componentsPanel,                                                                    //6 "创意工坊"页面
-                //new UserOptionsPanel(WindowManager, UserINISettings.Instance)                       //7 "创作者"页面
+                new UserOptionsPanel(WindowManager, UserINISettings.Instance),                       //7 "创作者"页面
+                new PatchOptionsPanel(WindowManager, UserINISettings.Instance),                      //8 "补丁设置"页面
             ];
 
             // 找到拦截的方法再启用

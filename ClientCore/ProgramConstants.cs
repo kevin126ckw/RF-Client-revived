@@ -26,9 +26,10 @@ namespace ClientCore
 
         public static readonly List<int> VersionValley = [22000, 22621, 22631, 26100, 26120, 26200, 26220, 28000];
 
-        
 
-        public static string CUR_SERVER_URL = "https://cn-east-ngb.update.yra2.com";
+
+        //public static string CUR_SERVER_URL = "https://cn-east-ngb.update.yra2.com";
+        public static string CUR_SERVER_URL = "https://ra2yr.dreamcloud.top:9999";
 
         public static bool SkipLogo = false;
 

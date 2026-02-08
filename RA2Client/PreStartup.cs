@@ -106,6 +106,10 @@ namespace Ra2Client
             Logger.Log("载入客户端配置.");
             UserINISettings.Initialize(ClientConfiguration.Instance.SettingsIniName);
 
+            // 设置水印显示回调
+            Rampastring.XNAUI.WindowManager.GetDisplayWatermark = () => UserINISettings.Instance.显示水印.Value;
+            Rampastring.XNAUI.WindowManager.GetDisplayDebugWatermark = () => UserINISettings.Instance.显示调试水印.Value;
+
             Mod.ReLoad();
            
 

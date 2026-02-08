@@ -9,20 +9,20 @@ namespace Ra2Client.Domain
 
         public static readonly Dictionary<string, string> TunnelServerUrls = new Dictionary<string, string>
         {
-            // { "仅重聚官方自建", "http://tunnel.yra2.com/my/" },
-            { "仅中国内地", "http://tunnel.yra2.com/cn/" },
-            { "仅中国内地+港澳台", "http://tunnel.yra2.com/zh/" },
-            { "原服务器列表", "http://tunnel.yra2.com/list/" }
+            { "仅官方自建", "https://ra2yr.dreamcloud.top:9999/tunnels/official" },
+            { "仅中国内地", "https://ra2yr.dreamcloud.top:9999/tunnels/cn" },
+            { "仅中国内地+港澳台", "https://ra2yr.dreamcloud.top:9999/tunnels/zh" },
+            { "原服务器列表", "https://ra2yr.dreamcloud.top:9999/tunnels/all" }
         };
 
-        public static string CurrentTunnelServerUrl = TunnelServerUrls["仅中国内地+港澳台"];
+        public static string CurrentTunnelServerUrl = TunnelServerUrls["仅官方自建"];
 
         public static string GAME_NAME_LONG = "Red Alert 2 Reunion Client";
         public static string GAME_NAME_SHORT = "Reunion";
 
         //public static string CREDITS_URL = Path.Combine(ProgramConstants.游戏目录, "Resources\\ThanksList");
 
-        public static string SUPPORT_URL_SHORT = "www.yra2.com";
+        public static string SUPPORT_URL_SHORT = "ra2.dreamcloud.top:9999";
 
         public static bool USE_ISOMETRIC_CELLS = true;
         public static int TDRA_WAYPOINT_COEFFICIENT = 128;

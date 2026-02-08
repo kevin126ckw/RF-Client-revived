@@ -492,9 +492,12 @@ namespace ClientGUI
 
                 var componentINI = new IniFile("Resources\\component");
                 var rules = 所有需要复制的文件.Find(f => f.ToLower().Contains("rulesmd.ini"));
+                Logger.Log($"rulesmd.ini位置:{rules}");
                 var art = 所有需要复制的文件.Find(f => f.ToLower().Contains("artmd.ini"));
+                Logger.Log($"artmd.ini位置:{art}");
 
                 var 启用皮肤 = rules != null && art != null && !newSection.KeyExists("GameID");
+                Logger.Log($"启用皮肤:{启用皮肤}");
 
                 IniFile rulesINI = null;
                 IniFile artINI = null;
@@ -515,7 +518,14 @@ namespace ClientGUI
                     if (type == 2 && 启用皮肤)
                     {
                         string skinPath = Path.Combine("Custom", "Skin", componentSection);
-                        if (!Directory.Exists(skinPath)) continue;
+                        if (!Directory.Exists(skinPath)) {
+                            Logger.Log($"皮肤：{skinPath}不存在");
+                            continue;
+                        }
+                        else
+                        {
+                            Logger.Log($"皮肤：获取到皮肤路径{skinPath}");
+                        }
                         // 获取所有文件（不包含子目录，如果需要包含子目录告诉我）
                         var files = Directory.GetFiles(skinPath);
 
@@ -532,6 +542,11 @@ namespace ClientGUI
                             if (!blacklist.Contains(fileName))
                             {
                                 所有需要复制的文件.Add(file);
+                                Logger.Log($"准备复制文件{file}");
+                            }
+                            else
+                            {
+                                Logger.Log($"皮肤：{fileName}因包含在黑名单中被排除");
                             }
                         }
 
@@ -539,9 +554,17 @@ namespace ClientGUI
                         {
                             IniFile.ConsolidateIniFiles(rulesINI,new IniFile(Path.Combine(skinPath, "rulesSkin.ini")));
                         }
+                        else
+                        {
+                            Logger.Log($"{Path.Combine(skinPath, "rulesSkin.ini")}不存在");
+                        }
                         if (File.Exists(Path.Combine(skinPath, "artSkin.ini")))
                         {
                             IniFile.ConsolidateIniFiles(artINI, new IniFile(Path.Combine(skinPath, "artSkin.ini")));
+                        }
+                        else
+                        {
+                            Logger.Log($"{Path.Combine(skinPath, "artSkin.ini")}不存在");
                         }
                     }
                 }
@@ -563,7 +586,10 @@ namespace ClientGUI
                 if (启用皮肤)
                 {
                     rulesINI.WriteIniFile(Path.Combine(ProgramConstants.游戏目录,"rulesmd.ini"));
+                    Logger.Log($"皮肤：已写入{Path.Combine(ProgramConstants.游戏目录, "rulesmd.ini")}");
                     artINI.WriteIniFile(Path.Combine(ProgramConstants.游戏目录, "artmd.ini"));
+                    Logger.Log($"皮肤：已写入{Path.Combine(ProgramConstants.游戏目录, "artmd.ini")}");
+
                 }
 
 

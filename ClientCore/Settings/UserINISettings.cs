@@ -157,6 +157,8 @@ namespace ClientCore
           
             SimplifiedCSF = new BoolSetting(iniFile, OPTIONS, "SimplifiedCSF", true);
             ForceEnableGameOptions = new BoolSetting(iniFile, OPTIONS, "ForceEnableGameOptions", true);
+            显示水印 = new BoolSetting(iniFile, OPTIONS, "DisplayWatermark", true);
+            显示调试水印 = new BoolSetting(iniFile, OPTIONS, "DisplayDebugWatermark", true);
             启用连点器 = new BoolSetting(iniFile, OPTIONS, "ConnectionDevice", true);
             PreloadMapPreviews = new BoolSetting(iniFile, VIDEO, "PreloadMapPreviews", false);
             ForceLowestDetailLevel = new BoolSetting(iniFile, VIDEO, "ForceLowestDetailLevel", false);
@@ -303,6 +305,8 @@ namespace ClientCore
 
         //随机壁纸
         public BoolSetting Random_wallpaper { get; private set; }
+        public BoolSetting 显示水印 { get; private set; }
+        public BoolSetting 显示调试水印 { get; private set; }
 
         public BoolSetting 跳过启动动画 { get; private set; }
 
