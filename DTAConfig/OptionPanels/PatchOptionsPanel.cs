@@ -34,13 +34,15 @@ namespace DTAConfig.OptionPanels{
 
             chk显示水印 = new XNAClientCheckBox(WindowManager);
             chk显示水印.Name = nameof(chk显示水印);
-            chk显示水印.ClientRectangle = new Rectangle(10, 50, 0, 0);
+            chk显示水印.ClientRectangle = new Rectangle(10, 40, 0, 0);
             chk显示水印.Text = "显示客户端水印";
+
+            chk显示水印.AllowChecking = true;
             AddChild(chk显示水印);
 
             chk显示调试水印 = new XNAClientCheckBox(WindowManager);
             chk显示调试水印.Name = nameof(chk显示调试水印);
-            chk显示调试水印.ClientRectangle = new Rectangle(10, 100, 0, 0);
+            chk显示调试水印.ClientRectangle = new Rectangle(10, 70, 0, 0);
             chk显示调试水印.Text = "显示调试水印";
             AddChild(chk显示调试水印);
 
