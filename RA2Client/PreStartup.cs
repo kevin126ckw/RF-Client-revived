@@ -51,7 +51,7 @@ namespace Ra2Client
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.ThrowException);
             Application.ThreadException += (sender, args) => HandleException(sender, args.Exception);
             AppDomain.CurrentDomain.UnhandledException += (sender, args) => HandleException(sender, (Exception)args.ExceptionObject);
-
+            
             //DirectoryInfo gameDirectory = SafePath.GetDirectory(ProgramConstants.GamePath);
             var gameDirectory = new DirectoryInfo(ProgramConstants.GamePath);
             Environment.CurrentDirectory = gameDirectory.FullName;
@@ -79,8 +79,8 @@ namespace Ra2Client
 
             Logger.Initialize(clientUserFilesDirectory.FullName, clientLogFile.Name);
             Logger.WriteLogFile = true;
-
-            MainClientConstants.Initialize();
+            
+            UserINISettings.Initialize(ClientConfiguration.Instance.SettingsIniName);
 
             Updater.GameVersion = Assembly.GetAssembly(typeof(PreStartup)).GetName().Version.ToString();
             Updater.GamePath = ProgramConstants.GamePath;
@@ -104,7 +104,8 @@ namespace Ra2Client
             parameters.UnknownStartupParams.ForEach(p => Logger.Log("Unknown startup parameter: " + p));
 
             Logger.Log("载入客户端配置.");
-            UserINISettings.Initialize(ClientConfiguration.Instance.SettingsIniName);
+
+            MainClientConstants.Initialize();
 
             // 设置水印显示回调
             Rampastring.XNAUI.WindowManager.GetDisplayWatermark = () => UserINISettings.Instance.显示水印.Value;

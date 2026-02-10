@@ -132,7 +132,7 @@ namespace Ra2Client
                 var currentVersionStr = Assembly.GetEntryAssembly().GetName().Version.ToString();
                 var currentVersion = Version.Parse(currentVersionStr);
 
-                string configUrl = "https://ra2yr.dreamcloud.top:9999/version/v1/config.ini";
+                string configUrl = $"{UserINISettings.Instance.BaseAPIAddress.Value}/version/v1/config.ini";
                 string configContent = FetchStringFromUrl(configUrl);
                 if (string.IsNullOrEmpty(configContent) || !configContent.Contains("verify=true"))
                 {
@@ -143,11 +143,11 @@ namespace Ra2Client
                 int lastPart = currentVersion.Revision;
                 if (lastPart == 99)
                 {
-                    authUrl = "https://ra2yr.dreamcloud.top:9999/version/v1/auth-delta-1.ini";
+                    authUrl = $"{UserINISettings.Instance.BaseAPIAddress.Value}/version/v1/auth-delta-1.ini";
                 }
                 else if (lastPart >= 0 && lastPart <= 98)
                 {
-                    authUrl = "https://ra2yr.dreamcloud.top:9999/version/v1/auth-lambda-1.ini";
+                    authUrl = $"{UserINISettings.Instance.BaseAPIAddress.Value}/version/v1/auth-lambda-1.ini";
                 }
                 else
                 {

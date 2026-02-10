@@ -20,15 +20,12 @@ public class NetWorkINISettings
     //private static string remoteFileUrl = "";                     // 远程设置路径
     private const string localFilePath = "Resources\\Settings";     // 本地设置路径
     private const string secUpdater = "Updater";                    // 更新段+组件段
-
-#if DEBUG
+    
     //public const string Address = "https://api.yra2.com/";
-    public const string Address = "https://ra2yr.dreamcloud.top:9999/";
+    //public string Address = UserINISettings.Instance.BaseAPIAddress.Value;
     //public const string Address = "http://localhost:9088/";
-#else
     //public const string Address = "https://api.yra2.com/";
-    public const string Address = "https://ra2yr.dreamcloud.top:9999/";
-#endif
+    //public const string Address = "https://ra2yr.dreamcloud.top:9999/";
 
     public static event EventHandler DownloadCompleted;
 
@@ -76,8 +73,9 @@ public class NetWorkINISettings
 
     public static void Initialize()
     {
+        var address = UserINISettings.Instance.BaseAPIAddress.Value + "/";
         Logger.Log("更新：开始初始化网络设置");
-        Logger.Log($"更新：API服务器地址: {Address}");
+        Logger.Log($"更新：API服务器地址: {address}");
 
         // 检查Token状态
         var token = UserINISettings.Instance.Token.Value;
@@ -201,7 +199,8 @@ public class NetWorkINISettings
         HttpResponseMessage response;
         try
         {
-            response = await client.PostAsync($"{Address}{url}", new StringContent(jsonContent, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+            var address = UserINISettings.Instance.BaseAPIAddress.Value + "/";
+            response = await client.PostAsync($"{address}{url}", new StringContent(jsonContent, Encoding.UTF8, "application/json")).ConfigureAwait(false);
         
 
         // 读取响应内容
@@ -249,8 +248,9 @@ public class NetWorkINISettings
         try
         {
 
+            var address = UserINISettings.Instance.BaseAPIAddress.Value + "/";
             // 发送 POST 请求并传递 formData
-            response = await client.PostAsync($"{Address}{url}", formData).ConfigureAwait(false);
+            response = await client.PostAsync($"{address}{url}", formData).ConfigureAwait(false);
         }
         catch (Exception ex)
         {
@@ -287,7 +287,8 @@ public class NetWorkINISettings
 
     public static async Task<(T,string)> Get<T>(string url,int timeOut = 30)
     {
-        var fullUrl = $"{Address}{url}";
+        var address = UserINISettings.Instance.BaseAPIAddress.Value + "/";
+        var fullUrl = $"{address}{url}";
         try
         {
             using var client = new HttpClient();
@@ -342,7 +343,8 @@ public class NetWorkINISettings
 
         try
         {
-            var fullUrl = new Uri(new Uri(Address.TrimEnd('/') + "/"), url.TrimStart('/'));
+            var address = UserINISettings.Instance.BaseAPIAddress.Value + "/";
+            var fullUrl = new Uri(new Uri(address.TrimEnd('/') + "/"), url.TrimStart('/'));
             Console.WriteLine($"下载地址: {fullUrl}");
 
             var response = await client.GetAsync(fullUrl).ConfigureAwait(false);

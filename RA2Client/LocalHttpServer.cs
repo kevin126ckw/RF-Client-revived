@@ -461,9 +461,10 @@ namespace Ra2Client
 
         public static async Task 写入地图(Maps map)
         {
+            var address = UserINISettings.Instance.BaseAPIAddress.Value + "/";
             if (map.file.StartsWith('u'))
             {
-                string imageUrl = Path.Combine(NetWorkINISettings.Address, map.file).Replace("\\", "/");
+                string imageUrl = Path.Combine(address, map.file).Replace("\\", "/");
                 string imageSavePath = await NetWorkINISettings.DownloadImageAsync(imageUrl, "Maps/Multi/MapLibrary/", $"{map.id}.map");
             }
             else
@@ -475,7 +476,7 @@ namespace Ra2Client
             // 2. 下载图片
             if (map.img != null)
             {
-                string imageUrl = Path.Combine(NetWorkINISettings.Address, map.img).Replace("\\", "/");
+                string imageUrl = Path.Combine(address, map.img).Replace("\\", "/");
                 string imageSavePath = await NetWorkINISettings.DownloadImageAsync(imageUrl, "Maps/Multi/MapLibrary/", $"{map.id}.jpg");
             }
 
@@ -511,7 +512,7 @@ namespace Ra2Client
                     // 路径使用正斜杠，符合配置格式
                     string relativePath = $"Maps/Multi/MapLibrary/{map.id}";
                     mapIni.SetValue(sectionName, "OtherFile", relativePath);
-                    string csfURL = Path.Combine(NetWorkINISettings.Address, map.csf).Replace("\\", "/");
+                    string csfURL = Path.Combine(address, map.csf).Replace("\\", "/");
                     string imageSavePath = await NetWorkINISettings.DownloadImageAsync(csfURL, relativePath, "ra2md.csf");
                 }
                 else if(!string.IsNullOrEmpty(map.otherFile))
@@ -531,7 +532,7 @@ namespace Ra2Client
                     // 路径使用正斜杠，符合配置格式
                
                     mapIni.SetValue(sectionName, "Mission", baseDir);
-                    string otherFileURL = Path.Combine(NetWorkINISettings.Address, map.otherFile).Replace("\\", "/");
+                    string otherFileURL = Path.Combine(address, map.otherFile).Replace("\\", "/");
                     await NetWorkINISettings.DownLoad(otherFileURL, Path.Combine("tmp", $"{map.id}.zip"));
 
                     SevenZip.ExtractWith7Zip(Path.Combine("tmp", $"{map.id}.zip"),Path.Combine("tmp", $"{map.id}"),needDel:true);
@@ -582,6 +583,7 @@ namespace Ra2Client
 
         public static async Task 写入任务包(MissionPackVo missionPackVo, WindowManager wm)
         {
+            var address = UserINISettings.Instance.BaseAPIAddress.Value + "/";
             try
             {
                 var fileName = Path.GetFileName(missionPackVo.file);
@@ -590,7 +592,7 @@ namespace Ra2Client
 
                 string downloadUrl;
                 if (missionPackVo.file.StartsWith("u"))
-                    downloadUrl = Path.Combine(NetWorkINISettings.Address, missionPackVo.file);
+                    downloadUrl = Path.Combine(address, missionPackVo.file);
                 else
                     downloadUrl = missionPackVo.file;
 
@@ -654,7 +656,8 @@ namespace Ra2Client
         }
 
         private static async Task 写入模组(ModVo modVo, WindowManager wm)
-        {
+        {   
+            var address = UserINISettings.Instance.BaseAPIAddress.Value + "/";
             try
             {
                 var fileName = Path.GetFileName(modVo.file);
@@ -663,7 +666,7 @@ namespace Ra2Client
 
                 string downloadUrl;
                 if (modVo.file.StartsWith("u"))
-                    downloadUrl = Path.Combine(NetWorkINISettings.Address, modVo.file);
+                    downloadUrl = Path.Combine(address, modVo.file);
                 else
                     downloadUrl = modVo.file;
 
@@ -715,7 +718,8 @@ namespace Ra2Client
         }
 
         private static async Task 写入组件(ComponentVo cmpVo, WindowManager wm)
-        {
+        {   
+            var address = UserINISettings.Instance.BaseAPIAddress.Value + "/";
             try
             {
                 var fileName = Path.GetFileName(cmpVo.file);
@@ -724,7 +728,7 @@ namespace Ra2Client
 
                 string downloadUrl;
                 if (cmpVo.file.StartsWith("u"))
-                    downloadUrl = Path.Combine(NetWorkINISettings.Address, cmpVo.file);
+                    downloadUrl = Path.Combine(address, cmpVo.file);
                 else
                     downloadUrl = cmpVo.file;
 

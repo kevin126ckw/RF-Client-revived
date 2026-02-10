@@ -1,3 +1,4 @@
+using ClientCore.Entity;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,7 +30,7 @@ namespace ClientCore
 
 
         //public static string CUR_SERVER_URL = "https://cn-east-ngb.update.yra2.com";
-        public static string CUR_SERVER_URL = "https://ra2yr.dreamcloud.top:9999";
+        public static string CUR_SERVER_URL => UserINISettings.Instance.BaseAPIAddress.Value;
 
         public static bool SkipLogo = false;
 

@@ -814,7 +814,7 @@ public class WindowManager : DrawableGameComponent
         {
             Renderer.DrawString("Reunion 2023 非官方服务器客户端", 0, Vector2.Zero, Color.Red, 1.0f);
             Renderer.DrawString("Patch by Kevin", 0, new Vector2(0, 16), Color.Red, 1.0f);
-            Renderer.DrawString("Version 1.3", 0, new Vector2(0, 32), Color.Red, 1.0f);
+            Renderer.DrawString("Version 1.4", 0, new Vector2(0, 32), Color.Red, 1.0f);
         }
 #endif
 #if DEBUG

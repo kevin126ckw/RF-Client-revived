@@ -498,7 +498,8 @@ namespace DTAConfig.OptionPanels
                     //    }
                     //}
 
-                    PreviewTexture = await AssetLoader.LoadTextureFromUrl(NetWorkINISettings.Address + map.img);
+                    var address = UserINISettings.Instance.BaseAPIAddress.Value + "/";
+                    PreviewTexture = await AssetLoader.LoadTextureFromUrl(address + map.img);
 
                     // UI更新需在主线程
                     WindowManager.AddCallback(new Action(() =>
